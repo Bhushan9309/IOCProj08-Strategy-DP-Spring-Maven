@@ -2,13 +2,22 @@ package com.nt.sbeans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 //Target Class
 @Component("vehicle")
 public final class Vehicle {
-	@Autowired
-	@Qualifier("dEngine")
+	
+	//@Qualifier("pEngine")
+	//@Qualifier("${engg.id}")  --invalid because place holder ${....} can not be used with out @Value
+	//@Qualifier("@Value('${engine.id}')") --invalid because @Value annotation can be placed in @Qualifier(--) annotation
+	/*@Value("${engine.id}")
+	private String id;
+	*/
+	@Autowired //Field Injection
+	//@Qualifier("id")  //invalid becoz we can not pass variable name inside the @Qualifier(--)
+	@Qualifier("motor")
 	private IEngine engine;
 	
 	public Vehicle()

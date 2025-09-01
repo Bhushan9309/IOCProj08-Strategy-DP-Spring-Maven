@@ -1,11 +1,12 @@
 package com.nt.sbeans;
 
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 //Dependent Class 1
 @Component("dEngine")
-
+@Lazy(true)
 public final class DieselEngine implements IEngine
 {
      public DieselEngine()
